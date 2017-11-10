@@ -90,7 +90,7 @@ exports.commands = {
 	typehelp: [
 		"/type - Generates a random typing.",
 		"!type - Broadcasts the generated typing.",
-	],
+	],/*
 
 	'!opensource': true,
 	github: "opensource",
@@ -155,7 +155,7 @@ exports.commands = {
 				"- <a href=\"http://exiledps.boards.net/thread/5/bug-reports/\">Bug Reports</a>"
 			);
 		}
-	},
+	},*/
 
 	'!roomhelp': true,
 	roomhelp: function (room) {
@@ -245,22 +245,17 @@ exports.commands = {
 		let popup = "<font size=5 color=#F7189F><u><strong>" + Config.serverName + " Credits:</strong></u></font><br />" +
 			"<br />" +
 			"<u><strong>Server Maintainers:</u></strong><br />" +
-			"- " + Server.nameColor('Insist', true) + " (Main Developer)<br />" +
-			"- " + Server.nameColor('Lycanium Z', true) + " (Owner, Sysadmin, Developer)<br />" +
-			"<br />" +
-			"<u><strong>Server Hosterino:</u></strong><br />" +
-			"- " + Server.nameColor('gyaratoast', true) + " (Owner, Hosterino Toasterino)<br />" +
+			"- " + Server.nameColor('Prince Sky', true) + " (Owner, Main Developer, CSS, Sysadmin)<br />" 
 			"<br />" +
 			"<u><strong>Major Contributors:</strong></u><br />" +
-			"- " + Server.nameColor('AlfaStorm', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('Back At My Day', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('flufi', true) + " (Code Breaker, Developer)<br />" +
-			"- " + Server.nameColor('HoeenHero', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('megas4ever', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('Volco', true) + " (Former Owner, and Developer)<br />" +
+			"- " + Server.nameColor('Shivay', true) + " (Developer)<br />" +
+			"- " + Server.nameColor('Kevin Neo Ryan', true) + " (Developer)<br />" +
+			"- " + Server.nameColor('General Draco', true) + " (Artist)<br />" +
+			"- " + Server.nameColor('Snorlax The Rain', true) + " (Manager)<br />" +
+			"- " + Server.nameColor('Pokemon 1920', true) + " (Manager)<br />" +
 			"<br />" +
 			"<u><strong>Retired Staff:</strong></u><br />" +
-			"- " + Server.nameColor('Alpha Hawk', true) + " (Former Developer)<br />" +
+			"- " + Server.nameColor('Princess Qtie', true) + " (Former Developer)<br />" +
 			"<br />" +
 			"<u><strong>Special Thanks:</strong></u><br />" +
 			"- Our Staff Members<br />" +
@@ -315,13 +310,6 @@ exports.commands = {
 			'<li><button class="button" name="send" value="/ssbhelp">SSBFFA</button></li><br />' +
 			'<li><button class="button" name="send" value="/tellhelp">Tells</button></li><br />' +
 			'<li><button class="button" name="send" value="/urbandefinehelp">Urban Define</button></li><br />' +
-			'</ul>' +
-			'<h2>Social Medias/Links:</h2><br /><ul>' +
-			'<li><a href="https://discord.gg/chfz65A" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Discord</button></a><br />' +
-			'<li><a href="http://exiledps.boards.net/" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Forums</button></a><br />' +
-			'<li><a href="https://github.com/DeathlyPlays/Exiled" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">GitHub</button></a><br />' +
-			'<li><a href="https://join.skype.com/Eo5DCq8nCh1j" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Join Our Skype</button></a><br />' +
-			'<li><a href="https://goo.gl/forms/ho9YhvxrnXMY2QLI3" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Submit A Fakemon</button></a><br />' +
 			'</ul>' +
 			'</div></div>'
 		);
