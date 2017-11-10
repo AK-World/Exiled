@@ -130,7 +130,7 @@ class Hangman extends Rooms.RoomGame {
 			result = 2;
 		}
 
-		let output = '<div style="background-color: #000; border: 12px double #FF0000; border-radius: 15px; color: #FF0000"><center><h3><img style="transform: scaleX(-1);" src="http://pldh.net/media/pokemon/gen6/xy-animated/491.gif" height="87" width="121" align="left"><font face="arial" size="4"><u><b>Hangman</b></u></font><img src="http://pldh.net/media/pokemon/gen6/xy-animated/491.gif" height="87" width="121" align="right"></h3><br><br><br><br><br><br><br><font face="arial" size="2">';
+		let output = '<div class="broadcast-' + (result === 1 ? 'red' : (result === 2 ? 'green' : 'blue')) + '">';
 		output += '<p style="text-align:left;font-weight:bold;font-size:10pt;margin:5px 0 0 15px">' + (result === 1 ? 'Too bad! The mon has been hanged.' : (result === 2 ? 'The word has been guessed. Congratulations!' : 'Hangman')) + '</p>';
 		output += '<table><tr><td style="text-align:center;">' + this.hangingMan() + '</td><td style="text-align:center;width:100%;word-wrap:break-word">';
 
@@ -151,12 +151,13 @@ class Hangman extends Rooms.RoomGame {
 				).join(', ');
 			}
 			if (result === 2) {
-				output += '<br />Winner: ' + Server.nameColor(this.lastGuesser, true);
+				output += '<br />Winner: ' + Chat.escapeHTML(this.lastGuesser);
+				SG.addExp(this.lastGuesser, this.room, 5);
 			} else if (this.guesses[this.guesses.length - 1].length === 1) {
 				// last guess was a letter
-				output += ' <small>&ndash; ' + Server.nameColor(this.lastGuesser, true) + '</small>';
+				output += ' <small>&ndash; ' + Chat.escapeHTML(this.lastGuesser) + '</small>';
 			} else {
-				output += '<br />Guessed: ' + this.guesses[this.guesses.length - 1] + ' <small>&ndash; ' + Server.nameColor(this.lastGuesser) + '</small>';
+				output += '<br />Guessed: ' + this.guesses[this.guesses.length - 1] + ' <small>&ndash; ' + Chat.escapeHTML(this.lastGuesser) + '</small>';
 			}
 		}
 
@@ -208,8 +209,8 @@ exports.commands = {
 			if (!params) return this.errorReply("No word entered.");
 			let word = params[0].replace(/[^A-Za-z '-]/g, '');
 			if (word.replace(/ /g, '').length < 1) return this.errorReply("Enter a valid word");
-			if (word.length > 100) return this.errorReply("Phrase must be less than 50 characters.");
-			if (word.split(' ').some(w => w.length > 100)) return this.errorReply("Each word in the phrase must be less than 20 characters.");
+			if (word.length > 30) return this.errorReply("Phrase must be less than 30 characters.");
+			if (word.split(' ').some(w => w.length > 20)) return this.errorReply("Each word in the phrase must be less than 20 characters.");
 			if (!/[a-zA-Z]/.test(word)) return this.errorReply("Word must contain at least one letter.");
 
 			let hint;
