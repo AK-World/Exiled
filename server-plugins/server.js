@@ -385,9 +385,6 @@ exports.commands = {
 		let name = this.targetUsername;
 		let userid = toId(name);
 
-		if (!Users.isUsernameKnown(userid)) {
-			return this.errorReply(`User '${this.targetUsername}' is offline and unrecognized, and so can't be promoted.`);
-		}
 
 		if (!this.can('makeroom')) return false;
 
@@ -431,9 +428,6 @@ exports.commands = {
 		let name = this.targetUsername;
 		let userid = toId(name);
 
-		if (!Users.isUsernameKnown(userid)) {
-			return this.errorReply(`User '${this.targetUsername}' is offline and unrecognized, and so can't be promoted.`);
-		}
 
 		if (!user.can('makeroom')) {
 			if (user.userid !== room.founder) return false;
