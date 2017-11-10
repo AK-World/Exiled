@@ -432,6 +432,26 @@ class GlobalRoom extends BasicRoom {
 				isOfficial: true,
 				autojoin: true,
 			}, {
+				title: 'Tournaments',
+				isOfficial: true,
+			},{
+				title: 'Game Corner',
+				isOfficial: true,
+			}, {
+				title: 'Casino',
+				isOfficial: true,
+			}, {
+				title: 'Impulse League',
+				isOfficial: true,
+			},{
+				title: 'Anything Goes',
+			},{
+				title: '1v1',
+			},{
+				title: 'Festival Plaza',
+			},{
+				title: 'The Empire',
+			}, {
 				title: 'Staff',
 				isPrivate: true,
 				staffRoom: true,
