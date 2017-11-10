@@ -6,8 +6,8 @@ const fs = require('fs');
 // Ideally, this should be zero.
 const DEFAULT_AMOUNT = 0;
 
-global.moneyName = 'Eon Ticket';
-global.moneyPlural = 'Eon Tickets';
+global.moneyName = 'Snow Ball';
+global.moneyPlural = 'Snow Balls';
 
 /**
  * Gets an amount and returns the amount with the name of the money.
@@ -21,7 +21,7 @@ global.moneyPlural = 'Eon Tickets';
  * @returns {String}
  */
 function currencyName(amount) {
-	let name = " Eon Ticket";
+	let name = " Snow Ball";
 	return amount === 1 ? name : name + "s";
 }
 
@@ -35,7 +35,7 @@ function isMoney(money) {
 	let numMoney = Number(money);
 	if (isNaN(money)) return "Must be a number.";
 	if (String(money).includes('.')) return "Cannot contain a decimal.";
-	if (numMoney < 1) return "Cannot be less than one Eon Ticket.";
+	if (numMoney < 1) return "Cannot be less than one Snow Ball.";
 	return numMoney;
 }
 
@@ -66,14 +66,14 @@ let shopDisplay = getShopDisplay(shop);
  * @return {String} display
  */
 function getShopDisplay(shop) {
-	let display = "<center><img src=https://image.prntscr.com/image/wO_tNEvmQTqr0gNVkEJtSQ.gif><img src=http://i.imgur.com/WOewQZw.gif width=300> <img src=https://play.pokemonshowdown.com/sprites/xyani/latias.gif></center><br><div' + (!this.isOfficial ? ' class=infobox-limited' : '') + '><table style='background: #e8e8e8; border-color: #0f27ff; border-radius: 8px' border='1' cellspacing='0' cellpadding='5' width='100%'>" +
-		"<tbody><tr><th><font color=#ff0f0f face=courier>Item</font></th><th><font color=#ff0f0f face=courier>Description</font></th><th><font color=#ff0f0f face=courier>Price</font></th></tr>";
+	let display = "<center><font-size=4><u><b>Santa Shop</b></u>/font></center><br><div' + (!this.isOfficial ? ' class=infobox-limited' : '') + '><table style='background: #FFF; border-color: #000; border-radius: 8px' border='1' cellspacing='0' cellpadding='5' width='100%'>" +
+		"<tbody><tr><th><font color=#000 face=courier>Item</font></th><th><font color=000 face=courier>Description</font></th><th><font color=#000 face=courier>Price</font></th></tr>";
 	let start = 0;
 	while (start < shop.length) {
 		display += "<tr>" +
-			"<td align='center'><button name='send' style='background: #e8e8e8; border-radius: 5px; border: solid, 1px, #0f27ff; font-size: 11px; padding: 5px 10px' value='/buy " + shop[start][0] + "'><font color=#ff0f0f face=courier><strong>" + shop[start][0] + "</strong></font></button>" + "</td>" +
-			"<td align='center'><font color=#ff0f0f face=courier>" + shop[start][1] + "</font></td>" +
-			"<td align='center'><font color=#ff0f0f face=courier>" + shop[start][2] + "</font></td>" +
+			"<td align='center'><button name='send' style='background: rgb(210, 237, 249); border-radius: 5px; border: solid, 1px, #000; font-size: 11px; padding: 5px 10px' value='/buy " + shop[start][0] + "'><font color=#000 face=courier><strong>" + shop[start][0] + "</strong></font></button>" + "</td>" +
+			"<td align='center'><font color=#000 face=courier>" + shop[start][1] + "</font></td>" +
+			"<td align='center'><font color=#000 face=courier>" + shop[start][2] + "</font></td>" +
 			"</tr>";
 		start++;
 	}
