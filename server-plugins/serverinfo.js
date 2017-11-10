@@ -245,7 +245,7 @@ exports.commands = {
 		let popup = "<font size=5 color=#F7189F><u><strong>" + Config.serverName + " Credits:</strong></u></font><br />" +
 			"<br />" +
 			"<u><strong>Server Maintainers:</u></strong><br />" +
-			"- " + Server.nameColor('Prince Sky', true) + " (Owner, Main Developer, CSS, Sysadmin)<br />" 
+			"- " + Server.nameColor('Prince Sky', true) + " (Owner, Main Developer, CSS, Sysadmin)<br />" +
 			"<br />" +
 			"<u><strong>Major Contributors:</strong></u><br />" +
 			"- " + Server.nameColor('Shivay', true) + " (Developer)<br />" +
