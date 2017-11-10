@@ -66,7 +66,7 @@ let shopDisplay = getShopDisplay(shop);
  * @return {String} display
  */
 function getShopDisplay(shop) {
-	let display = "<center><font-size=4><u><b>Santa Shop</b></u>/font></center><br><div' + (!this.isOfficial ? ' class=infobox-limited' : '') + '><table style='background: #FFF; border-color: #000; border-radius: 8px' border='1' cellspacing='0' cellpadding='5' width='100%'>" +
+	let display = "<center><font-size=4><u><b>Santa Shop</b></u></font></center><br><div' + (!this.isOfficial ? ' class=infobox-limited' : '') + '><table style='background: #FFF; border-color: #000; border-radius: 8px' border='1' cellspacing='0' cellpadding='5' width='100%'>" +
 		"<tbody><tr><th><font color=#000 face=courier>Item</font></th><th><font color=000 face=courier>Description</font></th><th><font color=#000 face=courier>Price</font></th></tr>";
 	let start = 0;
 	while (start < shop.length) {
@@ -155,7 +155,7 @@ function findItem(item, money) {
 		price = shop[len][2];
 		if (price > money) {
 			amount = price - money;
-			this.errorReply("You don't have you enough money for this. You need " + amount + currencyName(amount) + " more to buy " + item + ".");
+			this.errorReply("You don't have you enough snow balls for this. You need " + amount + currencyName(amount) + " more to buy " + item + ".");
 			return false;
 		}
 		return price;
