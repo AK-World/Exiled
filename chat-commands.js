@@ -1848,9 +1848,7 @@ exports.commands = {
 			return this.errorReply(`/${cmd} - Access denied.`);
 		}
 
-		if (!Users.isUsernameKnown(userid)) {
-			return this.errorReply(`/globalpromote - WARNING: '${name}' is offline and unrecognized. The username might be misspelled (either by you or the person who told you) or unregistered. Use /forcepromote if you're sure you want to risk it.`);
-		}
+	
 		if (targetUser && !targetUser.registered) {
 			return this.errorReply(`User '${name}' is unregistered, and so can't be promoted.`);
 		}
