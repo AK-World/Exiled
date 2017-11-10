@@ -224,38 +224,30 @@ exports.commands = {
 			);
 		},
 	},
-	fc: 'friendcode',
-	friendcode: {
+	crush: {
 		add: 'set',
 		set: function (target, room, user) {
 			if (room.battle) return this.errorReply("Please use this command outside of battle rooms.");
 			if (!user.autoconfirmed) return this.errorReply("You must be autoconfirmed to use this command.");
 			if (!target) return this.parse('/help', true);
 			let fc = target;
-			fc = fc.replace(/-/g, '');
-			fc = fc.replace(/ /g, '');
-			if (isNaN(fc)) {
-				return this.errorReply("Your friend code needs to contain only numerical characters.");
-			}
-			if (fc.length < 12) return this.errorReply("Your friend code needs to be 12 digits long.");
-			fc = fc.slice(0, 4) + '-' + fc.slice(4, 8) + '-' + fc.slice(8, 12);
 			Db("friendcode").set(toId(user), fc);
-			return this.sendReply("Your friend code: " + fc + " has been saved to the server.");
+			return this.sendReply("Your crush: " + fc + " has been saved to the server.");
 		},
 		remove: 'delete',
 		delete: function (target, room, user) {
 			if (room.battle) return this.errorReply("Please use this command outside of battle rooms.");
 			if (!user.autoconfirmed) return this.errorReply("You must be autoconfirmed to use this command.");
 			if (!target) {
-				if (!Db("friendcode").has(toId(user))) return this.errorReply("Your friend code isn't set.");
+				if (!Db("friendcode").has(toId(user))) return this.errorReply("Your crush isn't set.");
 				Db("friendcode").delete(toId(user));
-				return this.sendReply("Your friend code has been deleted from the server.");
+				return this.sendReply("Your crush has been deleted from the server.");
 			} else {
 				if (!this.can('lock')) return false;
 				let userid = toId(target);
 				if (!Db("friendcode").has(userid)) return this.errorReply(userid + " hasn't set a friend code.");
 				Db("friendcode").delete(userid);
-				return this.sendReply(userid + "'s friend code has been deleted from the server.");
+				return this.sendReply(userid + "'s crush has been deleted from the server.");
 			}
 		},
 		'': 'help',
@@ -263,12 +255,12 @@ exports.commands = {
 			if (room.battle) return this.errorReply("Please use this command outside of battle rooms.");
 			if (!user.autoconfirmed) return this.errorReply("You must be autoconfirmed to use this command.");
 			return this.sendReplyBox(
-				'<center><code>/friendcode</code> commands<br />' +
-				'All commands are nestled under the namespace <code>friendcode</code>.</center>' +
+				'<center><code>/crush</code> commands<br />' +
+				'All commands are nestled under the namespace <code>crush</code>.</center>' +
 				'<hr width="100%">' +
-				'<code>[add|set] [code]</code>: Sets your friend code. Must be in the format 111111111111, 1111 1111 1111, or 1111-1111-1111.' +
+				'<code>[add|set] [code]</code>: Sets your crush.' +
 				'<br />' +
-				'<code>[remove|delete]</code>: Removes your friend code. Global staff can include <code>[username]</code> to delete a user\'s friend code.' +
+				'<code>[remove|delete]</code>: Removes your crush. Global staff can include <code>[username]</code> to delete a user\'s crush.' +
 				'<br />' +
 				'<code>help</code>: Displays this help command.'
 			);
@@ -348,7 +340,7 @@ exports.commands = {
 				}
 				profile += '&nbsp;<font color="#24678d"><strong>Last Seen:</strong></font> ' + getLastSeen(toId(username)) + '</font><br />';
 				if (Db("friendcode").has(toId(username))) {
-					profile += '&nbsp;<font color="#24678d"><strong>Friend Code:</strong></font> ' + Db("friendcode").get(toId(username));
+					profile += '&nbsp;<font color="#24678d"><strong>Crush:</strong></font> ' + Db("friendcode").get(toId(username));
 				}
 				profile += '<br clear="all">';
 				self.sendReplyBox(profile);
