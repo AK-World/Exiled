@@ -310,13 +310,6 @@ exports.commands = {
 			'<li><button class="button" name="send" value="/tellhelp">Tells</button></li><br />' +
 			'<li><button class="button" name="send" value="/urbandefinehelp">Urban Define</button></li><br />' +
 			'</ul>' +
-			'<h2>Social Medias/Links:</h2><br /><ul>' +
-			'<li><a href="https://discord.gg/chfz65A" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Discord</button></a><br />' +
-			'<li><a href="http://exiledps.boards.net/" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Forums</button></a><br />' +
-			'<li><a href="https://github.com/DeathlyPlays/Exiled" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">GitHub</button></a><br />' +
-			'<li><a href="https://join.skype.com/Eo5DCq8nCh1j" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Join Our Skype</button></a><br />' +
-			'<li><a href="https://goo.gl/forms/ho9YhvxrnXMY2QLI3" target="_blank"><button style="cursor: url(&quot;&quot;), auto;">Submit A Fakemon</button></a><br />' +
-			'</ul>' +
 			'</div></div>'
 		);
 	},
