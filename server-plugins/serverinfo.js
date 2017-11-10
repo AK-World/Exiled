@@ -90,7 +90,7 @@ exports.commands = {
 	typehelp: [
 		"/type - Generates a random typing.",
 		"!type - Broadcasts the generated typing.",
-	],
+	],/*
 
 	'!opensource': true,
 	github: "opensource",
@@ -155,7 +155,7 @@ exports.commands = {
 				"- <a href=\"http://exiledps.boards.net/thread/5/bug-reports/\">Bug Reports</a>"
 			);
 		}
-	},
+	},*/
 
 	'!roomhelp': true,
 	roomhelp: function (room) {
@@ -245,22 +245,16 @@ exports.commands = {
 		let popup = "<font size=5 color=#F7189F><u><strong>" + Config.serverName + " Credits:</strong></u></font><br />" +
 			"<br />" +
 			"<u><strong>Server Maintainers:</u></strong><br />" +
-			"- " + Server.nameColor('Insist', true) + " (Main Developer)<br />" +
-			"- " + Server.nameColor('Lycanium Z', true) + " (Owner, Sysadmin, Developer)<br />" +
-			"<br />" +
-			"<u><strong>Server Hosterino:</u></strong><br />" +
-			"- " + Server.nameColor('gyaratoast', true) + " (Owner, Hosterino Toasterino)<br />" +
+			"- " + Server.nameColor('Prince Sky', true) + " (Main Developer, Owner, Sysadmin)<br />" +
 			"<br />" +
 			"<u><strong>Major Contributors:</strong></u><br />" +
-			"- " + Server.nameColor('AlfaStorm', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('Back At My Day', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('flufi', true) + " (Code Breaker, Developer)<br />" +
-			"- " + Server.nameColor('HoeenHero', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('megas4ever', true) + " (Developer)<br />" +
-			"- " + Server.nameColor('Volco', true) + " (Former Owner, and Developer)<br />" +
+			"- " + Server.nameColor('Shivay', true) + " (Developer)<br />" +
+			"- " + Server.nameColor('General Draco', true) + " (Artist)<br />" +
+			"- " + Server.nameColor('SnorlaxTheRain', true) + " (Server Manager)<br />" +
+			"- " + Server.nameColor('Pokemon 1920', true) + " (Developer)<br />" +
 			"<br />" +
 			"<u><strong>Retired Staff:</strong></u><br />" +
-			"- " + Server.nameColor('Alpha Hawk', true) + " (Former Developer)<br />" +
+			"- " + Server.nameColor('Princess Qtie', true) + " (Former Developer)<br />" +
 			"<br />" +
 			"<u><strong>Special Thanks:</strong></u><br />" +
 			"- Our Staff Members<br />" +
