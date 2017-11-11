@@ -444,8 +444,10 @@ class GlobalRoom extends BasicRoom {
 				title: 'Impulse League',
 				isOfficial: true,
 			},{
-				title: 'Anything Goes',
+				title: 'Trivia',
 			},{
+				title: 'Anything Goes',
+			},	 {
 				title: '1v1',
 			},{
 				title: 'Festival Plaza',
