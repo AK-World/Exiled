@@ -1,7 +1,7 @@
 /*
- * Poll chat plugin
- * By bumbadadabum and Zarel.
- */
+* Poll chat plugin
+* By bumbadadabum and Zarel.
+*/
 
 'use strict';
 
@@ -20,15 +20,10 @@ class Poll {
 		this.totalVotes = 0;
 		this.timeout = null;
 		this.timeoutMins = 0;
-		this.startTime = Date.now();
-		this.startedUser = SG.nameColor(questionData.username, true, true);
 
 		this.options = new Map();
 		for (let i = 0; i < options.length; i++) {
-			this.options.set(i + 1, {
-				name: options[i],
-				votes: 0,
-			});
+			this.options.set(i + 1, {name: options[i], votes: 0});
 		}
 	}
 
@@ -61,43 +56,32 @@ class Poll {
 	}
 
 	generateVotes() {
-		let count = 0;
-		let output = '<div style="border-top-right-radius: 20px; border-top-left-radius: 20px;"><table cellspacing="0" style="background: rgba(0, 0, 0, 0.4); width: 100%; border: 1px solid #FFFF00; border-bottom: none; border-top-right-radius: 20px; border-top-left-radius: 20px;"><tr><td colspan="4" class="poll-td" style="background: rgba(0, 0, 0, 0.4); background: linear-gradient(rgba(70, 173, 212, 0.5), rgba(126, 192, 238, 0.8)); border-bottom: 1px solid #79330A; border-top-right-radius: 20px; border-top-left-radius: 20px; text-shadow: 0px 0px 2px #EEE; box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8) inset, 0px 0px 1px rgba(0, 0, 0, 0.5) inset;"><span style="border: 1px solid #3B763B; color: #2D5A2D; border-radius: 4px; padding: 0 3px; box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8);"><i class="fa fa-bar-chart"></i> Poll</span> <strong style="font-size: 11pt; color: #512106;">' + this.getQuestionMarkup() + '</strong><br /></td></tr>';
+		let output = '<div class="infobox"><p style="margin: 2px 0 5px 0"><span style="border:1px solid #6A6;color:#484;border-radius:4px;padding:0 3px"><i class="fa fa-bar-chart"></i> Poll</span> <strong style="font-size:11pt">' + this.getQuestionMarkup() + '</strong></p>';
 		this.options.forEach((option, number) => {
-			count++;
-			if (count === 1) output += "<tr>";
-			output += '<td class="poll-td"><button style="border-radius: 20px; transition-duration: 0.5s; transition-timing-function: linear;" value="/poll vote ' + number + '" name="send" title="Vote for ' + number + '. ' + Chat.escapeHTML(option.name) + '"' + (option.void ? ' disabled' : '') + '>' + Chat.escapeHTML(option.name) + '</button></td>';
-			if (count >= 4) {
-				output += "</tr>";
-				count = 0;
-			}
+			output += '<div style="margin-top: 5px"><button class="button" style="text-align: left" value="/poll vote ' + number + '" name="send" title="Vote for ' + number + '. ' + Chat.escapeHTML(option.name) + '">' + number + '. <strong>' + this.getOptionMarkup(option) + '</strong></button></div>';
 		});
-		output += '</table></div><div style="background: rgba(0, 0, 0, 0.4); padding: 8px 0px; text-align: center; border: 1px solid #FFFF00; border-top: none; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;"><button value="/poll results" name="send" title="View results - you will not be able to vote after viewing results" class="poll-results-btn" style="border-radius: 20px; transition-duration: 0.5s; transition-timing-function: linear;"><small>(View results)</small></button></div>';
+		output += '<div style="margin-top: 7px; padding-left: 12px"><button value="/poll results" name="send" title="View results - you will not be able to vote after viewing results"><small>(View results)</small></button></div>';
+		output += '</div>';
+
 		return output;
 	}
 
 	generateResults(ended, option) {
-		let icon = '<span style="border: 1px solid #' + (ended ? '777; color: #555' : '3B763B; color: #2D5A2D') + '; border-radius: 4px; padding: 0 3px; box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8);"><i class="fa fa-bar-chart"></i> ' + (ended ? "Poll ended" : "Poll") + '</span>';
-		let totalVotes = '<br /><span style="font-style: italic; font-size: 9pt; color: #79330A;">[Total Votes: ' + this.totalVotes + '] (Started by ' + this.startedUser + ' ' + Chat.toDurationString(Date.now() - this.startTime) + ' ago.)</span></div>';
-		let output = '<div style="background: rgba(0, 0, 0, 0.4); width: 100%; border: 1px solid #FFFF00; border-radius: 20px;"><div class="poll-td" style="background: rgba(255, 174, 127, 0.8); background: linear-gradient(rgba(70, 173, 212, 0.5), rgba(126, 192, 238, 0.8)); border-bottom: 1px solid #79330A; border-top-right-radius: 20px; border-top-left-radius: 20px; text-shadow: 0px 0px 2px #EEE; box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8) inset, 0px 0px 1px rgba(0, 0, 0, 0.5) inset;">' + icon + ' <strong style="font-size: 11pt; color: #512106;">' + this.getQuestionMarkup() + '</strong>';
-		output += totalVotes;
-		output += '<div style="padding: 8px 15px;"><font color="yellow"><small><center>(Options with 0 votes are not shown)</center></small></font>';
-		output += '<table cellspacing="0" style="width: 100%;margin-top: 3px;">';
+		let icon = '<span style="border:1px solid #' + (ended ? '777;color:#555' : '6A6;color:#484') + ';border-radius:4px;padding:0 3px"><i class="fa fa-bar-chart"></i> ' + (ended ? "Poll ended" : "Poll") + '</span>';
+		let output = '<div class="infobox"><p style="margin: 2px 0 5px 0">' + icon + ' <strong style="font-size:11pt">' + this.getQuestionMarkup() + '</strong></p>';
 		let iter = this.options.entries();
 
 		let i = iter.next();
 		let c = 0;
-		let colors = ['#00FFFF', '#66CCCC', '#388E8E'];
+		let colors = ['#79A', '#8A8', '#88B'];
 		while (!i.done) {
-			if (i.value[1].votes && i.value[1].votes !== 0) {
-				let percentage = Math.round((i.value[1].votes * 100) / (this.totalVotes || 1));
-				output += '<tr><td><strong>' + (i.value[0] === option ? '<em>' : '') + Chat.escapeHTML(i.value[1].name) + (i.value[0] === option ? '</em>' : '') + '</strong> <small>(' + i.value[1].votes + ' vote' + (i.value[1].votes === 1 ? '' : 's') + ')</small></td><td><span style="font-size: 7pt; background: ' + colors[c % 3] + '; padding-right: ' + (percentage * 3) + 'px; border-radius: 20px;"></span><small>&nbsp;' + percentage + '%</small></td></tr>';
-			}
+			let percentage = Math.round((i.value[1].votes * 100) / (this.totalVotes || 1));
+			output += '<div style="margin-top: 3px">' + i.value[0] + '. <strong>' + (i.value[0] === option ? '<em>' : '') + this.getOptionMarkup(i.value[1]) + (i.value[0] === option ? '</em>' : '') + '</strong> <small>(' + i.value[1].votes + ' vote' + (i.value[1].votes === 1 ? '' : 's') + ')</small><br /><span style="font-size:7pt;background:' + colors[c % 3] + ';padding-right:' + (percentage * 3) + 'px"></span><small>&nbsp;' + percentage + '%</small></div>';
 			i = iter.next();
 			c++;
 		}
-		if (option === 0 && !ended) output += '<div style="text-align:center; color:yellow;"><small>(You can\'t vote after viewing results)</small></div>';
-		output += '</table>';
+		if (option === 0 && !ended) output += '<div><small>(You can\'t vote after viewing results)</small></div>';
+		output += '</div>';
 
 		return output;
 	}
@@ -112,7 +96,7 @@ class Poll {
 		return Chat.escapeHTML(option.name);
 	}
 
-	update(force) {
+	update() {
 		let results = [];
 
 		for (let i = 0; i <= this.options.size; i++) {
@@ -126,8 +110,6 @@ class Poll {
 				user.sendTo(this.room, '|uhtmlchange|poll' + this.room.pollNumber + '|' + results[this.voters[user.userid]]);
 			} else if (user.latestIp in this.voterIps) {
 				user.sendTo(this.room, '|uhtmlchange|poll' + this.room.pollNumber + '|' + results[this.voterIps[user.latestIp]]);
-			} else if (force) {
-				user.sendTo(this.room, '|uhtmlchange|poll' + this.room.pollNumber + '|' + this.generateVotes());
 			}
 		}
 	}
@@ -189,7 +171,7 @@ class Poll {
 		let results = this.generateResults(true);
 
 		this.room.send('|uhtmlchange|poll' + this.room.pollNumber + '|<div class="infobox">(The poll has ended &ndash; scroll down to see the results)</div>');
-		this.room.add('|html|' + results).update();
+		this.room.add('|html|' + results);
 	}
 }
 
@@ -226,21 +208,12 @@ exports.commands = {
 			if (supportHTML) params = params.map(parameter => this.canHTML(parameter));
 			if (params.some(parameter => !parameter)) return;
 
-			let options = [];
-
-			for (let i = 1; i < params.length; i++) {
-				options.push(params[i]);
+			const options = params.splice(1);
+			if (options.length > 8) {
+				return this.errorReply("Too many options for poll (maximum is 8).");
 			}
 
-			if (options.length > 36) {
-				return this.errorReply("Too many options for poll (maximum is 36).");
-			}
-
-			room.poll = new Poll(room, {
-				source: params[0],
-				supportHTML: supportHTML,
-				username: user.name,
-			}, options);
+			room.poll = new Poll(room, {source: params[0], supportHTML: supportHTML}, options);
 			room.poll.display();
 
 			this.logEntry("" + user.name + " used " + message);
@@ -261,99 +234,17 @@ exports.commands = {
 			if (isNaN(parsed)) return this.errorReply("To vote, specify the number of the option.");
 
 			if (!room.poll.options.has(parsed)) return this.sendReply("Option not in poll.");
-			if (room.poll.options.get(parsed).void) return this.sendReply("That option is void.");
 
 			room.poll.vote(user, parsed);
 		},
 		votehelp: ["/poll vote [number] - Votes for option [number]."],
-
-		void: function (target, room, user) {
-			if (!room.poll) return this.errorReply("There is no poll running in this room.");
-			if (!target) return this.parse('/help poll void');
-			if (!this.can('minigame', null, room)) return false;
-			let targetSplit = target.split(',');
-			for (let u in targetSplit) targetSplit[u] = targetSplit[u].trim();
-
-			if (targetSplit.length > 10) return this.errorReply("You can't void more than 10 options at a time.");
-
-			let values = [];
-			let voided = [];
-			let invalid = [];
-
-			room.poll.options.forEach((obj, idx) => {
-				values[toId(obj.name)] = idx;
-			});
-			for (let u in targetSplit) {
-				if (!values[toId(targetSplit[u])]) {
-					invalid.push(targetSplit[u]);
-					continue;
-				}
-				room.poll.options.get(values[toId(targetSplit[u])]).void = true;
-				room.poll.totalVotes -= room.poll.options.get(values[toId(targetSplit[u])]).votes;
-				room.poll.options.get(values[toId(targetSplit[u])]).votes = 0;
-				voided.push(targetSplit[u]);
-			}
-
-			for (let u in room.poll.voters) {
-				if (!room.poll.options.get(room.poll.voters[u])) continue;
-				let option = room.poll.options.get(room.poll.voters[u]).name;
-				if (values[toId(option)]) {
-					delete room.poll.voters[u];
-				}
-			}
-
-			for (let u in room.poll.voterIps) {
-				if (!room.poll.options.get(room.poll.voterIps[u])) continue;
-				let option = room.poll.options.get(room.poll.voterIps[u]).name;
-				if (values[toId(option)]) {
-					delete room.poll.voterIps[u];
-				}
-			}
-
-			room.poll.update(true);
-			if (invalid.length > 0) this.sendReply("The following options are not valid options to void: " + invalid.join(', '));
-			if (voided.length > 0) this.addModCommand(user.name + " has voided the following poll options: " + voided.join(', '));
-		},
-		voidhelp: ["/poll void [option] - Voids a poll option. You can specify multiple options by seperating them with a comma."],
-
-		unvoid: function (target, room, user) {
-			if (!room.poll) return this.errorReply("There is no poll running in this room.");
-			if (!target) return this.parse('/help poll void');
-			if (!this.can('minigame', null, room)) return false;
-			let targetSplit = target.split(',');
-			for (let u in targetSplit) targetSplit[u] = targetSplit[u].trim();
-
-			if (targetSplit.length > 10) return this.errorReply("You can't unvoid more than 10 options at a time.");
-
-			let values = [];
-			let voided = [];
-			let invalid = [];
-
-			room.poll.options.forEach((obj, idx) => {
-				values[toId(obj.name)] = idx;
-			});
-			for (let u in targetSplit) {
-				if (!values[toId(targetSplit[u])]) {
-					invalid.push(targetSplit[u]);
-					continue;
-				}
-				if (!room.poll.options.get(values[toId(targetSplit[u])]).void) continue;
-				room.poll.options.get(values[toId(targetSplit[u])]).void = false;
-				voided.push(targetSplit[u]);
-			}
-
-			room.poll.update(true);
-			if (invalid.length > 0) this.sendReply("The following options are not valid options to unvoid: " + invalid.join(', '));
-			if (voided.length > 0) this.addModCommand(user.name + " has unvoided the following poll options: " + voided.join(', '));
-		},
-		unvoidhelp: ["/poll unvoid [option] - Undoes /poll void. You can specify multiple options by seperating them with a comma."],
 
 		timer: function (target, room, user) {
 			if (!room.poll) return this.errorReply("There is no poll running in this room.");
 
 			if (target) {
 				if (!this.can('minigame', null, room)) return false;
-				if (target === 'clear' || target === 'off') {
+				if (target === 'clear') {
 					if (!room.poll.timeout) return this.errorReply("There is no timer to clear.");
 					clearTimeout(room.poll.timeout);
 					room.poll.timeout = null;
@@ -416,12 +307,6 @@ exports.commands = {
 		},
 		displayhelp: ["/poll display - Displays the poll"],
 
-		votes: function (target, room, user) {
-			if (!room.poll) return this.errorReply("There is no poll running in this room.");
-			if (!this.runBroadcast()) return;
-			this.sendReplyBox("votes: " + room.poll.totalVotes);
-		},
-
 		'': function (target, room, user) {
 			this.parse('/help poll');
 		},
@@ -437,31 +322,6 @@ exports.commands = {
 		"/poll display - Displays the poll",
 		"/poll end - Ends a poll and displays the results. Requires: % @ * # & ~",
 	],
-
-	tpoll: 'tierpoll',
-	tierpoll: function (target, room, user, connection, cmd, message) {
-		if (!this.can('minigame', null, room)) return false;
-		if (room.poll) return this.errorReply("There is already a poll in progress in this room.");
-		let options = [];
-		for (let key in Dex.formats) {
-			if (!Dex.formats[key].mod) continue;
-			if (!Dex.formats[key].searchShow) continue;
-			if (toId(target) !== 'all') {
-				let commonMods = ['gen7', 'sgssb', 'pmd', 'cssb', 'metronome', 'digimon', 'fivemovefrenzy'];
-				if (commonMods.indexOf(Dex.formats[key].mod) === -1) continue;
-			}
-			options.push(Dex.formats[key].name);
-		}
-		room.poll = new Poll(room, {
-			source: 'What should the next tournament tier be?',
-			supportHTML: false,
-			username: user.name,
-		}, options);
-		room.poll.display();
-		this.logEntry("" + user.name + " used " + message);
-		return this.privateModCommand("(A tier poll was started by " + user.name + ".)");
-	},
-	tierpollhelp: ["/tierpoll - (all) Creates a poll with all the common formats as options. All all to use all formats Requires: % @ * # & ~"],
 };
 
 process.nextTick(() => {
