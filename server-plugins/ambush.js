@@ -14,7 +14,7 @@ class Ambush {
 		}
 		this.timeLeft = Date.now() + seconds * 1000;
 
-		this.room.add('|uhtml|ambush' + this.room.ambushCount + this.round + '|<div style="background-color: #000000 ; border: 12px double #860000 ; color: #DF0101"><h3><img style="transform: scaleX(-1);" src="http://pldh.net/media/pokemon/gen6/xy-animated/491.gif" height="87" width="121" align="left"><font face="arial" size="4"><u><strong>A game of Ambush has created!</strong></u></font><img src="http://pldh.net/media/pokemon/gen6/xy-animated/488.gif" height="87" width="121" align="right"></h3><br><br><br><br><br><center>' +
+		this.room.add('|uhtml|ambush' + this.room.ambushCount + this.round + '|<div class="ambush"><h3><font face="arial" size="4"><u><strong>A game of Ambush has created!</strong></u></font></h3><br><br><br><br><br><center>' +
 			'The game will begin in <strong>' + seconds + '</strong> seconds!' +
 			'<br><br><button style="border: 4px solid #000 ; background: White ; box-shadow: 0px 1px 1px rgba(255 , 255 , 255 , 0.3) inset ; color: #DF0101 ; margin: 1px 6px ; padding: 8px 40px" name = "send" value = "/ambush join"><font size="3">Join!</font></button><br><br></center></div>'
 		);
