@@ -3,6 +3,9 @@
 // The server port - the port to run Pokemon Showdown under
 exports.port = 80;
 
+exports.serverid = 'impulse';
+exports.servertoken = 'HKBkRnibdfEN';
+
 // The server name (this will speed up the process of renaming some features)
 exports.serverName = "Impulse";
 
