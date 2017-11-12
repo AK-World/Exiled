@@ -246,9 +246,9 @@ exports.commands = {
 		if (!this.can('broadcast')) return false;
 		if (!target) return this.errorReply('USAGE: /team give [USER]'); /*
 		let user = target.toLowerCase().trim(); */
-		Db('hasteam').set(user, 1);
-		this.sendReply(user + ' has been given the ability to set their team.');
-		Users(user).popup('You have been given the ability to set your profile team.');
+		Db('hasteam').set(target, 1);
+		this.sendReply(target + ' has been given the ability to set their team.');
+		Users(target).popup('You have been given the ability to set your profile team.');
 	},
     take: function (target, room, user) {
 		if (!this.can('broadcast')) return false;
