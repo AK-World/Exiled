@@ -269,7 +269,8 @@ if (message && message !== true && typeof message.then !== 'function') {
 				this.room.add(`|c|${this.user.getIdentity(this.room.id)}|${message}`);
 			}
 		}
-
+if (this.user.registered && giveExp) Server.addExp(this.user.userid, this.room, 1);
+		this.update();
 
 		this.update();
 
