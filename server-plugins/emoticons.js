@@ -14,7 +14,7 @@ try {
 
 function loadEmoticons() {
 	try {
-		emoticons = JSON.parse(fs.readFileSync('config/emoticons.json', 'utf8'));
+		emoticons = JSON.parse(fs.readFileSync('config/db/emoticons.json', 'utf8'));
 		emoteRegex = [];
 		for (let emote in emoticons) {
 			emoteRegex.push(escapeRegExp(emote));
@@ -25,7 +25,7 @@ function loadEmoticons() {
 loadEmoticons();
 
 function saveEmoticons() {
-	fs.writeFileSync('config/emoticons.json', JSON.stringify(emoticons));
+	fs.writeFileSync('config/db/emoticons.json', JSON.stringify(emoticons));
 	emoteRegex = [];
 	for (let emote in emoticons) {
 		emoteRegex.push(emote);
@@ -36,7 +36,7 @@ function saveEmoticons() {
 function parseEmoticons(message) {
 	if (emoteRegex.test(message)) {
 		message = Server.parseMessage(message).replace(emoteRegex, function (match) {
-			return '<img src="' + emoticons[match] + '" title="' + match + '" height="50" width="50">';
+			return '<img src="' + emoticons[match] + '" title="' + match + '" height="40" width="40">';
 		});
 		return message;
 	}
@@ -112,7 +112,7 @@ exports.commands = {
 		case 'list':
 			if (!this.runBroadcast()) return;
 			let reply = "<strong><u>Emoticons (" + Object.keys(emoticons).length + ")</u></strong><br />";
-			for (let emote in emoticons) reply += "(" + emote + " <img src=\"" + emoticons[emote] + "\" height=\"50\" width=\"50\">) ";
+			for (let emote in emoticons) reply += "(" + emote + " <img src=\"" + emoticons[emote] + "\" height=\"40\" width=\"40\">) ";
 			this.sendReply('|raw|<div class="infobox infobox-limited">' + reply + '</div>');
 			break;
 
