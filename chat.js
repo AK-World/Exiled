@@ -24,7 +24,7 @@ To reload chat commands:
 */
 
 'use strict';
-
+let Chat = module.exports;
 const MAX_MESSAGE_LENGTH = 300;
 
 const BROADCAST_COOLDOWN = 20 * 1000;
@@ -36,8 +36,8 @@ const VALID_COMMAND_TOKENS = '/!';
 const BROADCAST_TOKEN = '!';
 
 const FS = require('./fs');
-const parseEmoticons = require('/server-plugins/emoticons').parseEmoticons;
-let Chat = module.exports;
+const parseEmoticons = require('./server-plugins/emoticons').parseEmoticons;
+const path = require('path');
 
 // Matches U+FE0F and all Emoji_Presentation characters. More details on
 // http://www.unicode.org/Public/emoji/5.0/emoji-data.txt
