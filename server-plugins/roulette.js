@@ -17,15 +17,6 @@ var Roulette = (function () {
         }.bind(this), EXPIRATION_TIME);
     }
     Roulette.prototype.placeBet = function (user, color, self) {
-        for (var i = 0; i < user.getAlts().length; i++) {
-            if (this.players[user.getAlts()[i]]) return self.sendReply('Your alt \'' + user.getAlts()[i] + '\' has already joined the roulette. Continue playing under that alt.');
-        }
-        for (i in this.players) {
-            if (Users.get(i).getAlts().indexOf(user.userid) > -1) return self.sendReply('Your alt \'' + Users.get(i).name + '\' has already joined the roulette. Continue playing under that alt.');
-        }
-        for (i in user.prevNames) {
-            if (this.players[i] && i !== user.userid) return self.sendReply('Your alt \'' + user.prevNames[i] + '\' has already joined the roulette. Continue playing under that alt.');
-        }
         if (!this.players[user.userid]) {
             this.players[user.userid] = {};
             this.players[user.userid].color = color;
