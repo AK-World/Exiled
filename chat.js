@@ -254,64 +254,29 @@ class CommandContext {
 		}
 
 		// Output the message
-
-		if (message && message !== true && typeof message.then !== 'function') {
+if (message && message !== true && typeof message.then !== 'function') {
 			if (this.pmTarget) {
-				let noEmotes = message;
-				let emoticons = Server.parseEmoticons(message);
-				if (emoticons) {
-					noEmotes = message;
-					message = "/html " + emoticons;
-				}
+				const parsedMsg = parseEmoticons(message, this.room, this.user, true);
+				if (parsedMsg) message = '/html ' + parsedMsg;
 				let buf = `|pm|${this.user.getIdentity()}|${this.pmTarget.getIdentity()}|${message}`;
 				this.user.send(buf);
-				if (Users.ShadowBan.checkBanned(this.user)) {
-					Users.ShadowBan.addMessage(this.user, "Private to " + this.pmTarget.getIdentity(), noEmotes);
-				} else {
-					if (this.pmTarget !== this.user) this.pmTarget.send(buf);
-				}
+				if (this.pmTarget !== this.user) this.pmTarget.send(buf);
+
 				this.pmTarget.lastPM = this.user.userid;
 				this.user.lastPM = this.pmTarget.userid;
 			} else {
-				let emoticons = Server.parseEmoticons(message);
-				if (emoticons && !this.room.disableEmoticons) {
-					if (Users.ShadowBan.checkBanned(this.user)) {
-						Users.ShadowBan.addMessage(this.user, "To " + this.room.id, message);
-						if (!Server.ignoreEmotes[this.user.userid]) this.user.sendTo(this.room, (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') + this.user.getIdentity(this.room.id) + '|/html ' + emoticons);
-						if (Server.ignoreEmotes[this.user.userid]) this.user.sendTo(this.room, (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') + this.user.getIdentity(this.room.id) + '|' + message);
-						this.room.update();
-						return false;
-					}
-					for (let u in this.room.users) {
-						let curUser = Users(u);
-						if (!curUser || !curUser.connected) continue;
-						if (Server.ignoreEmotes[curUser.userid]) {
-							curUser.sendTo(this.room, (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') + this.user.getIdentity(this.room.id) + '|' + message);
-							continue;
-						}
-						curUser.sendTo(this.room, (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') + this.user.getIdentity(this.room.id) + '|/html ' + emoticons);
-					}
-					this.room.log.push((this.room.type === 'chat' ? (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') : '|c|') + this.user.getIdentity(this.room.id) + '|' + message);
-					this.room.lastUpdate = this.room.log.length;
-					this.room.messageCount++;
-				} else {
-					if (Users.ShadowBan.checkBanned(this.user)) {
-						Users.ShadowBan.addMessage(this.user, "To " + this.room.id, message);
-						this.user.sendTo(this.room, (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') + this.user.getIdentity(this.room.id) + '|' + message);
-					} else {
-						this.room.add((this.room.type === 'chat' ? (this.room.type === 'chat' ? '|c:|' + (~~(Date.now() / 1000)) + '|' : '|c|') : '|c|') + this.user.getIdentity(this.room.id) + '|' + message);
-						this.room.messageCount++;
-					}
-				}
-				//this.room.add(`|c|${this.user.getIdentity(this.room.id)}|${message}`);
+				if (parseEmoticons(message, this.room, this.user)) return;
+				this.room.add(`|c|${this.user.getIdentity(this.room.id)}|${message}`);
 			}
 		}
 
-		if (this.user.registered && giveExp) Server.addExp(this.user.userid, this.room, 1);
+
 		this.update();
 
 		return message;
 	}
+
+	
 
 	/**
 	 * @param {string} message
