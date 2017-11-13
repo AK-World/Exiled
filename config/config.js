@@ -4,8 +4,7 @@
 exports.port = 80;
 
 exports.serverid = 'impulse';
-exports.servertoken = 'HKBkRnibdfEN';
-
+exports.servertoken = 'lambqbaujvrT';
 // The server name (this will speed up the process of renaming some features)
 exports.serverName = "Impulse";
 
