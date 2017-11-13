@@ -29,7 +29,7 @@ exports.bindaddress = '0.0.0.0';
 exports.workers = 1;
 
 //serverIp for parsing of custom avatars, put your server's ip here
-exports.serverIp = 'impulsevps.cleverapps.io';
+exports.serverIp = 'princesky.cleverapps.io';
 
 // TODO: allow SSL to actually be possible to use for third-party servers at
 // some point.
