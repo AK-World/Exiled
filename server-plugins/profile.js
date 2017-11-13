@@ -444,7 +444,7 @@ exports.commands = {
 				if (Db("friendcode").has(toId(username))) {
 					profile += '&nbsp;<font color="#24678d"><strong>Crush:</strong></font> ' + Db("friendcode").get(toId(username)) + '<br />';
 				}
-        profile +='&nbsp;' + showTeam(toId(username)) + '<br />';
+        profile +='&nbsp;' + showTeam(toId(username)) + '';
 				profile += '<br clear="all">';
 				self.sendReplyBox(profile);
 			});
