@@ -117,7 +117,7 @@ global.Ontime = {};
 
 global.forever = {};
 
-global.Db = require('origindb')('mongodb://ClarkJ:Musaddiq777@impulsemongo-shard-00-00-coe3y.mongodb.net:27017,impulsemongo-shard-00-01-coe3y.mongodb.net:27017,impulsemongo-shard-00-02-coe3y.mongodb.net:27017/test?ssl=true&replicaSet=impulsemongo-shard-0&authSource=admin', {adapter: 'mongo'});
+global.Db = require('origindb')('mongodb://ClarkJ:<PASSWORD>@impulsedb-shard-00-00-coe3y.mongodb.net:27017,impulsedb-shard-00-01-coe3y.mongodb.net:27017,impulsedb-shard-00-02-coe3y.mongodb.net:27017/test?ssl=true&replicaSet=impulsedb-shard-0&authSource=admin', {adapter: 'mongo'});
 /*global.Db = require('origindb')('config/db');*/
 
 delete process.send; // in case we're a child process
