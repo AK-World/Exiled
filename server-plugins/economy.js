@@ -53,7 +53,7 @@ let shop = [
 	['POTD', 'Allows you to change the Pokemon of the Day that shows up guaranteed in Random Battles [Can be refused, or held off if one is already active]', 25],
 	['Room', 'Buys a chatroom for you to own. [Within reason, can be denied].', 30],
 	['Roomshop', 'Buys a Roomshop for your League or Room. [Will be removed if abused.]', 50],
-	['Staffmon', 'Buys a Pokemon with your name on it to be added in the Super Staff Bros Metagame. [Can be denied/edited]', 100],
+	['Profile TeM', 'Buys you ability to set you profile team.', 100],
 	['Symbol', 'Buys a custom symbol to go infront of your username and puts you at top of userlist. [Temporary until restart,certain symbols are blocked]', 5],
 ];
 
