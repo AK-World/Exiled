@@ -115,10 +115,10 @@ global.Tells = require('./tells');
 
 global.Ontime = {};
 
-global.forever = {};
-global.Db = require('machdb')('mongodb://MusaddiqT:Musaddiq777@ds259105.mlab.com:59105/machadb');
+global.forever = {};/*
+global.Db = require('machdb')('mongodb://MusaddiqT:Musaddiq777@ds259105.mlab.com:59105/machadb');*/
 
-/*global.Db = require('origindb')('mongodb://ClarkJ:Musaddiq777@impulsedb-shard-00-00-coe3y.mongodb.net:27017,impulsedb-shard-00-01-coe3y.mongodb.net:27017,impulsedb-shard-00-02-coe3y.mongodb.net:27017/test?ssl=true&replicaSet=impulsedb-shard-0&authSource=admin', {adapter: 'mongo'});*/
+global.Db = require('origindb')('mongodb://ClarkJ:Musaddiq777@impulsedb-shard-00-00-coe3y.mongodb.net:27017,impulsedb-shard-00-01-coe3y.mongodb.net:27017,impulsedb-shard-00-02-coe3y.mongodb.net:27017/test?ssl=true&replicaSet=impulsedb-shard-0&authSource=admin', {adapter: 'mongo'});
 /*global.Db = require('origindb')('config/db');*/
 
 delete process.send; // in case we're a child process
