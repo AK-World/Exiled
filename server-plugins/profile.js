@@ -257,7 +257,6 @@ exports.commands = {
 		if (!Db('hasteam').has(user)) return this.errorReply('This user does not have the ability to set their team.');
 		Db('hasteam').delete(user);
 		this.sendReply('this user has had their ability to change their team taken from them.');
-		Users(user).popup('You have been stripped of your ability to set your team.');
 	}, 
     help: function (target, room, user) {
 		if (!this.runBroadcast()) return;
