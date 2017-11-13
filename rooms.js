@@ -431,7 +431,7 @@ class GlobalRoom extends BasicRoom {
 				title: 'Lobby',
 				isOfficial: true,
 				autojoin: true,
-			}, {
+			},/* {
 				title: 'Tournaments',
 				isOfficial: true,
 			},{
@@ -453,7 +453,7 @@ class GlobalRoom extends BasicRoom {
 				title: 'Festival Plaza',
 			},{
 				title: 'The Empire',
-			}, {
+			}, */{
 				title: 'Staff',
 				isPrivate: true,
 				staffRoom: true,
