@@ -385,7 +385,7 @@ exports.commands = {
 	if (!Db('teams').has(user)) return '<div style="' + teamcss + '" >' + noSprite + noSprite + noSprite + noSprite + noSprite + noSprite + '</div>';
 
 	function iconize(link) {
-		return '<button id="kek" style="background:transparent;border:none;"><img src=" https://serebii.net/pokedex-sm/icon/' + link + '.png"></button>';
+		return '<button id="kek" style="background:transparent;border:none;"><img src="https://serebii.net/pokedex-sm/icon/' + link + '.png"></button>';
 	}
 	//return '<div style="' + teamcss + '">' + '<br>' + iconize(one) + iconize(two) + iconize(three) + '<br>' + iconize(four) + iconize(five) + iconize(six) + '</div>';*/
 	let teamDisplay = '<center><div style="' + teamcss + '">';
