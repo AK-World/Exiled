@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 const fs = require('fs');
 
@@ -18,15 +18,15 @@ function updateColor() {
 	fs.writeFileSync('config/symbolcolors.json', JSON.stringify(symbolColors));
 
 	let newCss = '/* Symbol Colors START */\n';
-
+/*
 	for (let name in symbolColors) {
 		newCss += generateCSS(name, symbolColors[name]);
 	}
 	newCss += '/* Symbol Colors END */\n';
-
+/*
 	let file = fs.readFileSync('config/custom.css', 'utf8').split('\n');
 	if (~file.indexOf('/* Symbol Colors START */')) file.splice(file.indexOf('/* Symbol Colors START */'), (file.indexOf('/* Symbol Colors END */') - file.indexOf('/* Symbol Colors START */')) + 1);
-	fs.writeFileSync('config/custom.css', file.join('\n') + newCss);
+	/*fs.writeFileSync('config/custom.css', file.join('\n') + newCss);
 	Server.reloadCSS();
 }
 
@@ -86,4 +86,4 @@ exports.commands = {
 		"/symbolcolor delete [user], delete - Deletes a user's symbol color",
 		"/symbolcolor reload - Reloads symbol colours.",
 	],
-  };
+  };*/
