@@ -1,6 +1,5 @@
 'use strict';
 
-const color = require('../config/color');
 
 /**
  * Checks if the money input is actually money.
