@@ -1,7 +1,7 @@
 'use strict';
 
 // The server port - the port to run Pokemon Showdown under
-exports.port = 8080;
+exports.port = 80;
 
 exports.serverid = 'impulse';
 exports.servertoken = 'HKBkRnibdfEN';
@@ -29,7 +29,7 @@ exports.bindaddress = '0.0.0.0';
 exports.workers = 1;
 
 //serverIp for parsing of custom avatars, put your server's ip here
-exports.serverIp = 'princesky.cleverapps.io';
+exports.serverIp = 'princesky.scalingo.io';
 
 // TODO: allow SSL to actually be possible to use for third-party servers at
 // some point.
