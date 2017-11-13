@@ -9,8 +9,25 @@ function bold(text) {
 }
 
 exports.commands = {
+	givechatcolor: function (target, room, user) {
+		if (!this.can('broadcast')) return false;
+		if (!target) return this.errorReply('USAGE: /givechatcolor [USER]'); /*
+		let user = target.toLowerCase().trim(); */
+		Db('chatcolors').set(target, 1);
+		this.sendReply(target + ' has been given the ability to use chat colors.');
+		Users(target).popup('You have been given the ability to use chat color.');
+	},
+	takechatcolor: function (target, room, user) {
+		if (!this.can('broadcast')) return false;
+		if (!target) return this.errorReply('USAGE: /takechatcolors [USER]'); /*
+		let user = target.toLowerCase().trim(); */
+		if (!Db('chatcolors').has(user)) return this.errorReply('This user does not have the ability to use chat colors.');
+		Db('chatcolors').delete(user);
+		this.sendReply('this user has had their ability to use chat colors is taken from them.');
+	}, 
 	chatcolour: 'chatcolor',
 	chatcolor: function (target, room, user) {
+		if (!Db('chatcolors').has(user.userid)) return this.errorReply('You dont have ability to use chat colors.');
 		let group = user.getIdentity().charAt(0);
 		if (room.auth) group = room.auth[user.userid] || group;
 		if (user.hiding) group = ' ';
