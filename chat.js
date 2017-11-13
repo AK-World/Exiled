@@ -36,7 +36,7 @@ const VALID_COMMAND_TOKENS = '/!';
 const BROADCAST_TOKEN = '!';
 
 const FS = require('./fs');
-
+const parseEmoticons = require('/server-plugins/emoticons').parseEmoticons;
 let Chat = module.exports;
 
 // Matches U+FE0F and all Emoji_Presentation characters. More details on
