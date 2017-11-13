@@ -29,7 +29,7 @@ exports.bindaddress = '0.0.0.0';
 exports.workers = 1;
 
 //serverIp for parsing of custom avatars, put your server's ip here
-exports.serverIp = 'impulse-server.cleverapps.io';
+exports.serverIp = 'impulsevps.cleverapps.io';
 
 // TODO: allow SSL to actually be possible to use for third-party servers at
 // some point.
@@ -39,7 +39,7 @@ exports.serverIp = 'impulse-server.cleverapps.io';
 //   of strings. Each string should be either an IP address or a subnet given
 //   in CIDR notation. You should usually leave this as `false` unless you
 //   know what you are doing.
-exports.proxyip = '10.69.187.242/8';
+exports.proxyip = false;
 
 // ofe - write heapdumps if sockets.js workers run out of memory.
 //   If you wish to enable this, you will need to install ofe, as it is not a
