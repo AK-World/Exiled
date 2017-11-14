@@ -443,6 +443,7 @@ class GlobalRoom extends BasicRoom {
 			}, {
 				title: 'Impulse League',
 				isOfficial: true,
+				auth: 'princesky':#, 'pokemon1920':%,
 			},{
 				title: 'Trivia',
 			},{
