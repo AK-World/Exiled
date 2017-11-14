@@ -42,7 +42,7 @@ exports.commands = {
 
 		if (amount < 2) return this.errorReply("You don't have enough snow balls for the bet.");
 
-		if (!target) return this.parse('/help bet');
+		if (!target) return this.parse('/help shellgame');
 
 		switch (choice) {
 		case 'ODD':
